@@ -1,0 +1,8 @@
+/.idea/.gitignore
+/.idea/.name
+/.idea/A-Trip-to-DSA-with-C.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/cmake-build-debug/
+/demo.c
