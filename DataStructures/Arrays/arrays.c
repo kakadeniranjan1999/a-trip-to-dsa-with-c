@@ -13,15 +13,21 @@ int get_user_input(char info[]){
 }
 
 void print_result(struct MyArray *array, char operation[], int operation_status){
-    printf("%s Operation Status : %s\n", operation, operation_status == 1 ? "SUCCESS" : "FAIL");
+    printf("\n\n%s Operation Status : %s\n", operation, operation_status == 1 ? "SUCCESS" : "FAIL");
     print_array(array);
-    printf("Total Size of array : %d Used Size of array : %d\n\n", array->total_size, array->used_size);
+    printf("Total Size of array : %d Used Size of array : %d", array->total_size, array->used_size);
 }
 
 int main(){
 
     int tSize, uSize;
     int operation_status;
+    struct SearchResult* search_result;
+
+    int insertion_element = 60, insertion_index = 5;
+    int append_ele = 50;
+    int deletion_index = 0;
+    int search_element = 5;
 
     tSize = get_user_input("Please Enter total size of array: ");
     uSize = get_user_input("Please Enter used size of array: ");
@@ -34,18 +40,25 @@ int main(){
     create_array(&marks, tSize, uSize);
     set_value(&marks);
     print_array(&marks);
-    printf("Total Size of array : %d Used Size of array : %d\n\n", marks.total_size, marks.used_size);
+    printf("Total Size of array : %d Used Size of array : %d", marks.total_size, marks.used_size);
 
-    operation_status = insert_element(&marks, 5, 60);
+    operation_status = insert_element(&marks, insertion_index, insertion_element);
     print_result(&marks, "Insertion", operation_status);
 
-    operation_status = append_element(&marks, 50);
+    operation_status = append_element(&marks, append_ele);
     print_result(&marks, "Append", operation_status);
 
-    operation_status = delete_element(&marks, 0);
+    operation_status = delete_element(&marks, deletion_index);
     print_result(&marks, "Deletion", operation_status);
 
-    search_element(&marks);
+    search_result = linear_search_element(&marks, search_element);
+    print_result(&marks, "Linear Search", search_result->operation_status);
+    printf("\nElement %d is found at index : %d", search_element, search_result->element_index);
+
+    search_result = binary_search_element(&marks, search_element);
+    print_result(&marks, "Binary Search", search_result->operation_status);
+    printf("\nElement %d is found at index : %d\n", search_element, search_result->element_index);
+
 
     return 0;
 }
