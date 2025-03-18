@@ -6,3 +6,6 @@
 /.idea/vcs.xml
 /cmake-build-debug/
 /demo.c
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/a-trip-to-dsa-with-c.iml
